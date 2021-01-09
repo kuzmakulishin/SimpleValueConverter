@@ -9,7 +9,7 @@ import UIKit
 
 class ConvertsViewController: UIViewController {
     
-    // температура
+    // элементы температура
     @IBOutlet weak var celToFarLabel: UILabel!
     @IBOutlet weak var celLabel: UILabel!
     @IBOutlet weak var farLabel: UILabel!
@@ -21,7 +21,7 @@ class ConvertsViewController: UIViewController {
         }
     }
     
-    // расстояние
+    // элементы расстояние
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var kmLabel: UILabel!
     @IBOutlet weak var metLabel: UILabel!
@@ -34,6 +34,7 @@ class ConvertsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // по умолчанию скрываем все элементы
         updateUI()
 
        
