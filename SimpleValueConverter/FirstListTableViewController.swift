@@ -42,8 +42,20 @@ class ListTableViewController: UITableViewController {
         performSegue(withIdentifier: "showcelldetail", sender: self)
     }
     
+    // тут экспериментировал и так и так и никак ((
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      guard let destination = segue.destination as? ConvertsViewController else { return }
+        let destination = segue.destination as? ConvertsViewController
+        
+//        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+//        var value2: String
+//
+//        for value in valueList.valueListArray {
+//            value2 = (destination?.showCurrentCellDetail(cell: value))!
+//        }
+//        destination!.typeValueToConvert = valueList
+        
+        
+        
         
     }
 }

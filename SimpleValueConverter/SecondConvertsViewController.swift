@@ -40,6 +40,28 @@ class ConvertsViewController: UIViewController {
        
     }
     
+    // функция, которые показывает элементы в зависимости от выбранного параметра
+    func showCurrentCellDetail(cell: String) -> String {
+        
+        switch cell {
+        case "Температура":
+            celToFarLabel.isHidden = false
+            celLabel.isHidden = false
+            farLabel.isHidden = false
+            tempSlider.isHidden = false
+        case "Скорость":
+            distanceLabel.isHidden = false
+            kmLabel.isHidden = false
+            metLabel.isHidden = false
+            distanceSlider.isHidden = false
+        default:
+            break
+        }
+        return cell
+    }
+    
+    
+    
     // показать Элементы для рассчёта температуры
     func showCelToFar() {
         celToFarLabel.isHidden = false

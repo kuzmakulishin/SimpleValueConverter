@@ -132,11 +132,6 @@
                             <constraint firstItem="hbr-DQ-Wmo" firstAttribute="leading" secondItem="xC7-DX-SnL" secondAttribute="leading" constant="16" id="eYV-GG-8fv"/>
                             <constraint firstItem="hbr-DQ-Wmo" firstAttribute="top" secondItem="xC7-DX-SnL" secondAttribute="top" constant="160" id="fUJ-TK-VoV"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="hbr-DQ-Wmo"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="yJP-lm-BH2"/>
                     <connections>
