@@ -7,9 +7,15 @@
 
 import Foundation
 
+// модель для списка ячеек
 
 struct ValuesToConvert {
-    var valueListArray = ["Температура",
-                     "Скорость",
-                     "Давление"]
+    
+    static func getValueList() -> [String] {
+        return ["Температура",
+                "Скорость",
+                "Давление"]
+    }
+    
+    
 }

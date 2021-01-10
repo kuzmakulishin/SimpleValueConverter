@@ -9,7 +9,7 @@ import UIKit
 
 class ConvertsViewController: UIViewController {
     
-    // элементы температура
+    // элементы для ячейки температура
     @IBOutlet weak var celToFarLabel: UILabel!
     @IBOutlet weak var celLabel: UILabel!
     @IBOutlet weak var farLabel: UILabel!
@@ -21,14 +21,14 @@ class ConvertsViewController: UIViewController {
         }
     }
     
-    // элементы расстояние
+    // элементы для ячейки расстояние
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var kmLabel: UILabel!
     @IBOutlet weak var metLabel: UILabel!
     @IBOutlet weak var distanceSlider: UISlider!
     
     
-    var typeValueToConvert = ValuesToConvert()
+    var typeValueToConvert = ValuesToConvert.getValueList()
     
 
     override func viewDidLoad() {
@@ -41,8 +41,9 @@ class ConvertsViewController: UIViewController {
     }
     
     // функция, которые показывает элементы в зависимости от выбранного параметра
-    func showCurrentCellDetail(cell: String) -> String {
+    func showCurrentCellDetail(cell: [String]) {
         
+        for cell in cell {
         switch cell {
         case "Температура":
             celToFarLabel.isHidden = false
@@ -57,7 +58,7 @@ class ConvertsViewController: UIViewController {
         default:
             break
         }
-        return cell
+        }
     }
     
     
@@ -80,6 +81,7 @@ class ConvertsViewController: UIViewController {
     
     @IBAction func tempSliderChange(_ sender: UISlider) {
         
+        // конвертируем температут цельсий в фаренгейты
         let tempC = Int(round(sender.value)) // round - округляет
         celLabel.text = "\(tempC) ºС"
         

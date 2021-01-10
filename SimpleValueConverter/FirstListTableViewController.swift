@@ -9,7 +9,7 @@ import UIKit
 
 class ListTableViewController: UITableViewController {
     
-    var valueList = ValuesToConvert()
+    var valueList = ValuesToConvert.getValueList()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class ListTableViewController: UITableViewController {
     // 1
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return valueList.valueListArray.count
+        return valueList.count
     }
     
     
@@ -29,7 +29,7 @@ class ListTableViewController: UITableViewController {
         // метод dequeueReusableCell нужен для того, чтобы ячейки реиспользовались, то есть в памяти были только те, которые видны на экране
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let typeValue = valueList.valueListArray[indexPath.row] // indexPath.row чтобы первый элемент массива попадал в первую ячейку, второй во вторую и т.д.
+        let typeValue = valueList[indexPath.row] // indexPath.row чтобы первый элемент массива попадал в первую ячейку, второй во вторую и т.д.
         
         cell.textLabel?.text = "\(typeValue)"
 
@@ -42,20 +42,24 @@ class ListTableViewController: UITableViewController {
         performSegue(withIdentifier: "showcelldetail", sender: self)
     }
     
+    /*
+     let svc = segue.destination as? Названиевью
+     svc.(название свойства второго вью) = (название свойства в таблице)
+     Если непрямой сигвей, то ещё вначале нужно if segue.identifier == «название» { /// }
+     */
+    
     // тут экспериментировал и так и так и никак ((
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as? ConvertsViewController
+        var destination = segue.destination as? ConvertsViewController
         
-//        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-//        var value2: String
-//
-//        for value in valueList.valueListArray {
-//            value2 = (destination?.showCurrentCellDetail(cell: value))!
-//        }
-//        destination!.typeValueToConvert = valueList
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        
+        // destination?.typeValueToConvert = valueList[indexPath.row]
         
         
+
         
-        
+    
     }
 }
