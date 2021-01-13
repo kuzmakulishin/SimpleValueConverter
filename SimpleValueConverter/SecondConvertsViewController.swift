@@ -29,6 +29,7 @@ class ConvertsViewController: UIViewController {
     
     
     var typeValueToConvert = ValuesToConvert.getValueList()
+    var typeValueName = "name"
     
 
     override func viewDidLoad() {
@@ -36,6 +37,19 @@ class ConvertsViewController: UIViewController {
         
         // по умолчанию скрываем все элементы
         updateUI()
+        
+        
+        switch typeValueName {
+        case "Температура":
+            showCelToFar()
+        case "Расстояние":
+            showDistance()
+        default:
+            break
+        }
+        
+        
+        
 
        
     }

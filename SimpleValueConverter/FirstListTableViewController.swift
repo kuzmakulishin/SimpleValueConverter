@@ -9,7 +9,13 @@ import UIKit
 
 class ListTableViewController: UITableViewController {
     
+    
+   
+    
+    
     var valueList = ValuesToConvert.getValueList()
+    
+    var valueName = ValuesToConvert()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,36 +36,46 @@ class ListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         let typeValue = valueList[indexPath.row] // indexPath.row чтобы первый элемент массива попадал в первую ячейку, второй во вторую и т.д.
-        
         cell.textLabel?.text = "\(typeValue)"
-
         return cell
     }
     
-    var selectCell = ConvertsViewController()
-    
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showcelldetail", sender: self)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        var selectCellType = cell?.textLabel?.text
+        
+        performSegue(withIdentifier: selectCellType!, sender: Any?.self)
     }
     
-    /*
-     let svc = segue.destination as? Названиевью
-     svc.(название свойства второго вью) = (название свойства в таблице)
-     Если непрямой сигвей, то ещё вначале нужно if segue.identifier == «название» { /// }
-     */
     
-    // тут экспериментировал и так и так и никак ((
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var destination = segue.destination as? ConvertsViewController
-        
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        
-        // destination?.typeValueToConvert = valueList[indexPath.row]
         
         
-
-        
-    
+        guard segue.identifier == "cell" else { return }
+        guard let destination = segue.destination as? ConvertsViewController else { return }
+        destination.typeValueName = "Текст ячейки"
     }
 }
+
+
+/*
+ 
+ делаю segue без привязки к ячейке, т.е прописываю идентификатор segue, и в методе didSelectRowAt вызываю метод performSegue(withIdentifier: ид segue, sender: то что нужно передать, selectCellType)
+
+ Затем в prepare проверяю if let text = sender as? String и передаю
+ 
+ */
+
+
+
+/*
+     Есть метод
+     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+     В нем вызови метод
+     let cell = tableView.cellForRow(at: indexPath)
+     Через cell можно получить текст ячейки
+     cell.textLabel.text - в зависимости от него или делай prepareForSegue нужный, но тогда тебе нужно на сториборде убрать переход.
+     
+     */
+
