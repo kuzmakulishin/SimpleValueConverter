@@ -28,8 +28,8 @@ class ConvertsViewController: UIViewController {
     @IBOutlet weak var distanceSlider: UISlider!
     
     
-    var typeValueToConvert = ValuesToConvert.getValueList()
-    var typeValueName = "name"
+
+    var typeValueName = "Название ячейки"
     
 
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class ConvertsViewController: UIViewController {
         // по умолчанию скрываем все элементы
         updateUI()
         
-        
+        // в зависимости от нужного названия ячейки срабатывает соответствущая функция
         switch typeValueName {
         case "Температура":
             showCelToFar()
@@ -47,35 +47,9 @@ class ConvertsViewController: UIViewController {
         default:
             break
         }
-        
-        
-        
-
+    
        
     }
-    
-    // функция, которые показывает элементы в зависимости от выбранного параметра
-    func showCurrentCellDetail(cell: [String]) {
-        
-        for cell in cell {
-        switch cell {
-        case "Температура":
-            celToFarLabel.isHidden = false
-            celLabel.isHidden = false
-            farLabel.isHidden = false
-            tempSlider.isHidden = false
-        case "Скорость":
-            distanceLabel.isHidden = false
-            kmLabel.isHidden = false
-            metLabel.isHidden = false
-            distanceSlider.isHidden = false
-        default:
-            break
-        }
-        }
-    }
-    
-    
     
     // показать Элементы для рассчёта температуры
     func showCelToFar() {

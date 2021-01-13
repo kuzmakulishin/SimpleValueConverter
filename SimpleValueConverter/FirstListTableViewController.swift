@@ -40,17 +40,19 @@ class ListTableViewController: UITableViewController {
         return cell
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
+        // получаю назчание ячейки
         var selectCellType = cell?.textLabel?.text
         
         performSegue(withIdentifier: selectCellType!, sender: Any?.self)
     }
     
-    
+    // мне нужно передать название ячейки на второй Вью (файл SecondConvertsViewController) в переменную typeValueName
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         
         guard segue.identifier == "cell" else { return }
         guard let destination = segue.destination as? ConvertsViewController else { return }
@@ -59,23 +61,5 @@ class ListTableViewController: UITableViewController {
 }
 
 
-/*
- 
- делаю segue без привязки к ячейке, т.е прописываю идентификатор segue, и в методе didSelectRowAt вызываю метод performSegue(withIdentifier: ид segue, sender: то что нужно передать, selectCellType)
 
- Затем в prepare проверяю if let text = sender as? String и передаю
- 
- */
-
-
-
-/*
-     Есть метод
-     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-     В нем вызови метод
-     let cell = tableView.cellForRow(at: indexPath)
-     Через cell можно получить текст ячейки
-     cell.textLabel.text - в зависимости от него или делай prepareForSegue нужный, но тогда тебе нужно на сториборде убрать переход.
-     
-     */
 
